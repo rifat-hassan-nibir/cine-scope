@@ -11,7 +11,9 @@ export default function DesktopNav() {
     <nav className="hidden md:flex flex-col p-5 w-64 h-screen bg-gray-900 border-r border-r-gray-800">
       <div>
         {/* logo */}
-        <p className="text-red-500 text-3xl font-bold pb-5">Cine Scope</p>
+        <p className="text-red-500 text-3xl font-bold pb-5 font-outfit tracking-tight">
+          Cine Scope
+        </p>
         {/* nav links */}
         <ul>
           {navLinks.map((link) => {
