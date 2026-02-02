@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <div>
-      <h1>Cine Scope</h1>
-    </div>
+    <main>
+      <h1>Home Page</h1>
+    </main>
   );
 }
