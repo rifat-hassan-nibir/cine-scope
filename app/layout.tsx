@@ -31,7 +31,9 @@ export default function RootLayout({
         <div className="flex">
           {/* desktop nav */}
           <DesktopNav />
-          <div className="h-screen flex-1 p-8 max-w-7xl mx-auto">{children}</div>
+          <main className="h-screen flex-1 overflow-y-auto">
+            <div className="max-w-7xl mx-auto p-8">{children}</div>
+          </main>
         </div>
       </body>
     </html>
