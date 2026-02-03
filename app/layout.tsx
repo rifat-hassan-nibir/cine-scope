@@ -31,7 +31,7 @@ export default function RootLayout({
         <div className="flex">
           {/* desktop nav */}
           <DesktopNav />
-          <div className="h-screen flex-1 p-5">{children}</div>
+          <div className="h-screen flex-1 p-8 max-w-7xl mx-auto">{children}</div>
         </div>
       </body>
     </html>

@@ -11,7 +11,7 @@ export default function DesktopNav() {
     <nav className="hidden md:flex flex-col p-5 w-64 h-screen bg-gray-900 border-r border-r-gray-800">
       <div>
         {/* logo */}
-        <p className="text-red-500 text-3xl font-bold pb-5 font-outfit tracking-tight">
+        <p className="text-primary text-3xl font-bold pb-5 font-outfit tracking-tight">
           Cine Scope
         </p>
         {/* nav links */}
@@ -25,7 +25,7 @@ export default function DesktopNav() {
                   href={link.href}
                   className={`flex items-center gap-3 py-3 px-4 mt-2 rounded-lg transition-all duration-200 group ${
                     isActive
-                      ? "bg-red-500/10 text-red-500 font-semibold border-r-2 border-r-red-500"
+                      ? "bg-primary/10 text-primary font-semibold border-r-2 border-r-primary"
                       : "text-gray-400 hover:text-white hover:bg-gray-800/50"
                   }`}
                 >
@@ -33,7 +33,7 @@ export default function DesktopNav() {
                     <Icon
                       size={20}
                       className={`transition-colors duration-200 ${
-                        isActive ? "text-red-500" : "text-gray-500 group-hover:text-white"
+                        isActive ? "text-primary" : "text-gray-500 group-hover:text-white"
                       }`}
                     />
                   )}
