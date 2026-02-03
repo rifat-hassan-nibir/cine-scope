@@ -1,7 +1,10 @@
 import MovieCard from "@/components/MovieCard";
 import { ChevronRight } from "lucide-react";
+import { getTopRatedMovies } from "@/services/tmdb";
 
-export default function Home() {
+export default async function Home() {
+  const topRatedMovies = await getTopRatedMovies();
+
   return (
     <>
       <div className="flex items-center justify-between mb-6">
@@ -12,16 +15,9 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        {topRatedMovies.results.map((movie: any) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     </>
   );
