@@ -3,6 +3,10 @@
 @theme {
   --font-inter: var(--font-inter);
   --font-outfit: var(--font-outfit);
+  --color-primary: #ef4444;
+  --color-secondary: #1e293b;
+  --color-surface: #1e293b;
+  --color-text: #ffffff;
 }
 
 :root {
