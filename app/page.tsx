@@ -1,14 +1,14 @@
 import MovieCard from "@/components/MovieCard";
-import { getAllGenreId, getPopularMoviesByGenres, getTopRatedMovies } from "@/services/tmdb";
+import { getAllGenres, getMoviesData, getTopRatedMovies } from "@/services/tmdb";
 import { ChevronRight } from "lucide-react";
 
 export default async function Home() {
   const topRatedMovies = await getTopRatedMovies();
-  const genres = await getAllGenreId();
+  const genres = await getAllGenres();
 
   const genreMovies = await Promise.all(
     genres.map(async (genre: any) => {
-      const movies = await getPopularMoviesByGenres(genre.id);
+      const movies = await getMoviesData(genre.id, "popularity.desc", 1);
       return {
         ...genre,
         movies: movies.slice(0, 5),
