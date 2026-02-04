@@ -3,6 +3,10 @@
 @theme {
   --font-inter: var(--font-inter);
   --font-outfit: var(--font-outfit);
+  --color-primary: #ef4444;
+  --color-secondary: #1e293b;
+  --color-surface: #1e293b;
+  --color-text: #ffffff;
 }
 
 :root {
@@ -11,4 +15,23 @@
 
 body {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+  border: 2px solid #030712;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
 }

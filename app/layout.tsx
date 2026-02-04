@@ -26,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-gray-950 text-white`}
+        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-gray-900 text-white`}
       >
         <div className="flex">
           {/* desktop nav */}
           <DesktopNav />
-          <div className="h-screen flex-1 p-5">{children}</div>
+          <main className="h-screen flex-1 overflow-y-auto">
+            <div className="max-w-7xl mx-auto p-8">{children}</div>
+          </main>
         </div>
       </body>
     </html>
