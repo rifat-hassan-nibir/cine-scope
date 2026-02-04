@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-gray-950 text-white`}
+        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-gray-900 text-white`}
       >
         <div className="flex">
           {/* desktop nav */}

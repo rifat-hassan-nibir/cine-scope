@@ -8,7 +8,7 @@ export default function DesktopNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden md:flex flex-col p-2 w-64 h-screen bg-gray-900 border-r border-r-gray-800">
+    <nav className="hidden md:flex flex-col p-2 w-64 h-screen bg-gray-800 border-r border-r-gray-800">
       <div>
         {/* logo */}
         <p className="text-primary text-3xl font-bold pb-5 font-outfit tracking-tight p-3">
