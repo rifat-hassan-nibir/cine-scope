@@ -1,7 +1,8 @@
-import { ChevronRight, Star, Plus, Check } from "lucide-react";
+import { Movie } from "@/types/tmdb";
+import { Plus, Star } from "lucide-react";
 import Link from "next/link";
 
-export default function MovieCard({ movie }: { movie: any }) {
+export default function MovieCard({ movie }: { movie: Movie }) {
   return (
     <Link
       href={`/movie/${movie.id}`}

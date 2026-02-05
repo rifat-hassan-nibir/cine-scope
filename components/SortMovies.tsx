@@ -1,9 +1,10 @@
 "use client";
 
+import { Genre } from "@/types/tmdb";
 import { ChevronDown, Filter } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function SortMovies({ genres }: { genres: any[] }) {
+export default function SortMovies({ genres }: { genres: Genre[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
