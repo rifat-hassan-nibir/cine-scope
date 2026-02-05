@@ -1,4 +1,11 @@
-import { Genre, GenreResponse, Movie, MovieResponse, MovieSortOption } from "@/types/tmdb";
+import {
+  Genre,
+  GenreResponse,
+  Movie,
+  MovieDetails,
+  MovieResponse,
+  MovieSortOption,
+} from "@/types/tmdb";
 
 // get top rated movies
 export const getTopRatedMovies = async (): Promise<Movie[]> => {
@@ -53,4 +60,17 @@ export const getAllGenres = async (): Promise<Genre[]> => {
   });
   const data: GenreResponse = await res.json();
   return data.genres;
+};
+
+// get movie details
+export const getMovieDetails = async (movieId: number): Promise<MovieDetails> => {
+  const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}`, {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+    },
+  });
+  const data: MovieDetails = await res.json();
+  return data;
 };
