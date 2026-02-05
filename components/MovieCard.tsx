@@ -10,7 +10,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <div className="aspect-2/3 w-full relative overflow-hidden">
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
           alt={movie.title}
           className="w-full h-full object-cover"
         />
@@ -23,7 +23,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                 <Star size={12} className="fill-yellow-400 mr-1" />
                 {movie.vote_average.toFixed(1)}
               </span>
-              <span className="text-gray-300 text-xs">{movie.release_date.slice(0, 4)}</span>
+              <span className="text-gray-300 text-xs">
+                {new Date(movie.release_date).getFullYear()}
+              </span>
             </div>
 
             <h3 className="text-white font-bold text-sm mb-3 line-clamp-2 leading-tight">
