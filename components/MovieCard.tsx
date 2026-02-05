@@ -1,7 +1,8 @@
-import { ChevronRight, Star, Plus, Check } from "lucide-react";
+import { Movie } from "@/types/tmdb";
+import { Plus, Star } from "lucide-react";
 import Link from "next/link";
 
-export default function MovieCard({ movie }: { movie: any }) {
+export default function MovieCard({ movie }: { movie: Movie }) {
   return (
     <Link
       href={`/movie/${movie.id}`}
@@ -9,7 +10,7 @@ export default function MovieCard({ movie }: { movie: any }) {
     >
       <div className="aspect-2/3 w-full relative overflow-hidden">
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
           alt={movie.title}
           className="w-full h-full object-cover"
         />
@@ -20,9 +21,11 @@ export default function MovieCard({ movie }: { movie: any }) {
             <div className="flex items-center gap-2 mb-2">
               <span className="flex items-center text-yellow-400 text-xs font-bold">
                 <Star size={12} className="fill-yellow-400 mr-1" />
-                {movie.vote_average}
+                {movie.vote_average.toFixed(1)}
               </span>
-              <span className="text-gray-300 text-xs">{movie.release_date}</span>
+              <span className="text-gray-300 text-xs">
+                {new Date(movie.release_date).getFullYear()}
+              </span>
             </div>
 
             <h3 className="text-white font-bold text-sm mb-3 line-clamp-2 leading-tight">

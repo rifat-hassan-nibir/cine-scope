@@ -1,5 +1,6 @@
 import MovieCard from "@/components/MovieCard";
 import { getAllGenres, getMoviesData, getTopRatedMovies } from "@/services/tmdb";
+import { Genre, Movie } from "@/types/tmdb";
 import { ChevronRight } from "lucide-react";
 
 export default async function Home() {
@@ -7,7 +8,7 @@ export default async function Home() {
   const genres = await getAllGenres();
 
   const genreMovies = await Promise.all(
-    genres.map(async (genre: any) => {
+    genres.map(async (genre: Genre) => {
       const movies = await getMoviesData(genre.id, "popularity.desc", 1);
       return {
         ...genre,
@@ -30,14 +31,14 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {topRatedMovies.slice(0, 10).map((movie: any) => (
+          {topRatedMovies.slice(0, 10).map((movie: Movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
       </section>
 
       {/* Movies by Genre */}
-      {genreMovies.map((genre: any) => (
+      {genreMovies.map((genre: Genre & { movies: Movie[] }) => (
         <section key={genre.id}>
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-text border-l-4 border-primary pl-4">
@@ -49,7 +50,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {genre.movies.map((movie: any) => (
+            {genre.movies.map((movie: Movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
