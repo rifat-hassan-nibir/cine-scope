@@ -21,9 +21,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
             <div className="flex items-center gap-2 mb-2">
               <span className="flex items-center text-yellow-400 text-xs font-bold">
                 <Star size={12} className="fill-yellow-400 mr-1" />
-                {movie.vote_average}
+                {movie.vote_average.toFixed(1)}
               </span>
-              <span className="text-gray-300 text-xs">{movie.release_date}</span>
+              <span className="text-gray-300 text-xs">{movie.release_date.slice(0, 4)}</span>
             </div>
 
             <h3 className="text-white font-bold text-sm mb-3 line-clamp-2 leading-tight">
