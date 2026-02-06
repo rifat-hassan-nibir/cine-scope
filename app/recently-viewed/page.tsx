@@ -3,7 +3,8 @@
 import MovieCard from "@/components/MovieCard";
 import { getFromLocalStorage } from "@/services/localStorage";
 import { Movie } from "@/types/tmdb";
-import { Eye, Link } from "lucide-react";
+import { Eye, Trash } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function RecentlyViewedPage() {
@@ -13,16 +14,30 @@ export default function RecentlyViewedPage() {
     setRecentlyViewed(getFromLocalStorage("recentlyViewed"));
   }, []);
 
+  const handleClearAll = () => {
+    setRecentlyViewed([]);
+    localStorage.removeItem("recentlyViewed");
+  };
+
   return (
     <div className="space-y-8">
-      <div className="flex items-center gap-3 border-b border-white/5 pb-6">
-        <div className="p-3 bg-primary/10 rounded-xl">
-          <Eye className="w-8 h-8 text-primary" />
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-3 border-b border-white/5 pb-6">
+          <div className="p-3 bg-primary/10 rounded-xl">
+            <Eye className="w-8 h-8 text-primary" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-white">Recently Viewed</h1>
+            <p className="text-gray-400">Your recently viewed movies</p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Recently Viewed</h1>
-          <p className="text-gray-400">Your recently viewed movies</p>
-        </div>
+
+        <button
+          onClick={handleClearAll}
+          className="hover:cursor-pointer inline-flex items-center px-6 py-3 bg-primary hover:bg-rose-700 text-white font-semibold rounded-lg transition-colors"
+        >
+          <Trash className="w-4 h-4 mr-2" /> Clear All
+        </button>
       </div>
 
       {recentlyViewed.length > 0 ? (
