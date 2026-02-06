@@ -13,7 +13,7 @@ export default async function MovieDetailsPage({ params }: { params: { id: strin
         <div className="space-y-6">
           <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-2/3">
             <img
-              src={`${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+              src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
               alt="No Poster"
               className="w-full h-full object-cover"
             />
