@@ -5,10 +5,14 @@ import { getFromLocalStorage } from "@/services/localStorage";
 import { Movie } from "@/types/tmdb";
 import { Clock } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function WatchlistPage() {
-  const [watchList, setWatchList] = useState(getFromLocalStorage("watchLater"));
+  const [watchList, setWatchList] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    setWatchList(getFromLocalStorage("watchLater"));
+  }, []);
 
   return (
     <div className="space-y-8">
