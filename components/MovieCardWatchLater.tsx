@@ -20,10 +20,7 @@ export default function MovieCardWatchLater({
 
   useEffect(() => {
     const watchLaterMovies = getFromLocalStorage("watchLater");
-
-    if (watchLaterMovies.length > 0) {
-      setIsWatchLater(watchLaterMovies.some((item: Movie) => item.id === movie.id));
-    }
+    setIsWatchLater(watchLaterMovies.some((item: Movie) => item.id === movie.id));
   }, [movie.id]);
 
   const handleWatchLater = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -7,10 +7,10 @@ import { Eye, Link } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function RecentlyViewedPage() {
-  const [watchList, setWatchList] = useState<Movie[]>([]);
+  const [recentlyViewed, setRecentlyViewed] = useState<Movie[]>([]);
 
   useEffect(() => {
-    setWatchList(getFromLocalStorage("recentlyViewed"));
+    setRecentlyViewed(getFromLocalStorage("recentlyViewed"));
   }, []);
 
   return (
@@ -25,10 +25,10 @@ export default function RecentlyViewedPage() {
         </div>
       </div>
 
-      {watchList.length > 0 ? (
+      {recentlyViewed.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {watchList.map((movie: Movie) => (
-            <MovieCard key={movie.id} movie={movie} setWatchList={setWatchList} />
+          {recentlyViewed.map((movie: Movie) => (
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
       ) : (
