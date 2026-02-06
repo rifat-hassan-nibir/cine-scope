@@ -1,5 +1,6 @@
 import { Movie } from "@/types/tmdb";
 import { Plus, Star } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
@@ -9,10 +10,12 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       className="group relative block rounded-xl overflow-hidden bg-surface transition-transform hover:-translate-y-1 hover:shadow-2xl"
     >
       <div className="aspect-2/3 w-full relative overflow-hidden">
-        <img
-          src={`${process.env.TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+        <Image
+          src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
           alt={movie.title}
-          className="w-full h-full object-cover"
+          width={500}
+          height={750}
+          className="object-cover"
         />
 
         {/* Hover Overlay */}

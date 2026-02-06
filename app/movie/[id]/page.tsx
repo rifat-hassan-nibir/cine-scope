@@ -1,6 +1,7 @@
 import { getMovieDetails } from "@/services/tmdb";
 import { Genre } from "@/types/tmdb";
 import { Calendar, Clock, Plus, Star } from "lucide-react";
+import Image from "next/image";
 
 export default async function MovieDetailsPage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -11,11 +12,13 @@ export default async function MovieDetailsPage({ params }: { params: { id: strin
       <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-8 lg:gap-12">
         {/* Poster Section */}
         <div className="space-y-6">
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-2/3">
-            <img
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-2/3 relative">
+            <Image
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
-              alt="No Poster"
-              className="w-full h-full object-cover"
+              alt={movie.title || "Movie Poster"}
+              width={500}
+              height={750}
+              className="object-cover"
             />
           </div>
           <button className="hover:cursor-pointer w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] bg-primary hover:bg-rose-700 text-white shadow-lg shadow-primary/25">
