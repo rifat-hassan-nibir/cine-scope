@@ -1,4 +1,5 @@
 import {
+  CastDetails,
   Genre,
   GenreResponse,
   Movie,
@@ -73,4 +74,30 @@ export const getMovieDetails = async (movieId: number): Promise<MovieDetails> =>
   });
   const data: MovieDetails = await res.json();
   return data;
+};
+
+// get movie cast details
+export const getMovieCastDetails = async (movieId: number): Promise<CastDetails> => {
+  const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}/credits`, {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+    },
+  });
+  const data: CastDetails = await res.json();
+  return data;
+};
+
+// get similar movies
+export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
+  const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}/similar`, {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+    },
+  });
+  const data: MovieResponse = await res.json();
+  return data.results || [];
 };
