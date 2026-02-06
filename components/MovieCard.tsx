@@ -1,3 +1,4 @@
+import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { Movie } from "@/types/tmdb";
 import { Plus, Star } from "lucide-react";
 import Image from "next/image";
@@ -11,7 +12,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <div className="aspect-2/3 w-full relative overflow-hidden">
         <Image
-          src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+          src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
           alt={movie.title}
           width={500}
           height={750}

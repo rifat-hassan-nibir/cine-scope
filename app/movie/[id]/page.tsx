@@ -1,3 +1,4 @@
+import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { getMovieDetails } from "@/services/tmdb";
 import { Genre } from "@/types/tmdb";
 import { Calendar, Clock, Plus, Star } from "lucide-react";
@@ -14,7 +15,7 @@ export default async function MovieDetailsPage({ params }: { params: { id: strin
         <div className="space-y-6">
           <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-2/3 relative">
             <Image
-              src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+              src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
               alt={movie.title || "Movie Poster"}
               width={500}
               height={750}
