@@ -25,3 +25,15 @@ export const removeFromLocalStorage = (key: string, id: number) => {
   const updatedMovies = storedMovies.filter((movie: any) => movie.id !== id);
   localStorage.setItem(key, JSON.stringify(updatedMovies));
 };
+
+// Add to Recently Viewed
+export const addToRecentlyViewed = (movie: any) => {
+  if (typeof window === "undefined") return;
+
+  const storedMovies = getFromLocalStorage("recentlyViewed");
+  if (storedMovies.length > 0 && storedMovies.some((m: any) => m.id === movie.id)) {
+    return;
+  }
+
+  localStorage.setItem("recentlyViewed", JSON.stringify([...storedMovies, movie]));
+};

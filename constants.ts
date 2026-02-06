@@ -18,4 +18,9 @@ export const navLinks = [
     href: "/watch-later",
     icon: Eye,
   },
+  {
+    title: "Recently Viewed",
+    href: "/recently-viewed",
+    icon: Eye,
+  },
 ];
