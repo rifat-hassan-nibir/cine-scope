@@ -14,8 +14,8 @@ export const navLinks = [
     icon: Film,
   },
   {
-    title: "Watchlist",
-    href: "/watchlist",
+    title: "Watch Later",
+    href: "/watch-later",
     icon: Eye,
   },
 ];
