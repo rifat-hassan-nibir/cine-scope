@@ -1,10 +1,17 @@
 import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { Movie } from "@/types/tmdb";
-import { Plus, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import MovieCardWatchLater from "./MovieCardWatchLater";
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({
+  movie,
+  setWatchList,
+}: {
+  movie: Movie;
+  setWatchList?: (movies: Movie[]) => void;
+}) {
   return (
     <Link
       href={`/movie/${movie.id}`}
@@ -36,9 +43,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               {movie.title}
             </h3>
 
-            <button className="hover:cursor-pointer w-full py-2 px-3 rounded-lg flex items-center justify-center gap-2 text-xs font-semibold transition-colors bg-white/20 backdrop-blur text-white hover:bg-white/30">
-              <Plus size={14} /> Watch Later
-            </button>
+            <MovieCardWatchLater movie={movie} setWatchList={setWatchList} />
           </div>
         </div>
 
