@@ -1,8 +1,9 @@
 import MovieCard from "@/components/MovieCard";
+import WatchLaterButton from "@/components/WatchLaterButton";
 import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { getMovieCastDetails, getMovieDetails, getSimilarMovies } from "@/services/tmdb";
 import { Cast, Genre, Movie } from "@/types/tmdb";
-import { Calendar, Clock, Film, PanelsTopLeft, Plus, Star, Users } from "lucide-react";
+import { Calendar, Clock, Film, PanelsTopLeft, Star, Users } from "lucide-react";
 import Image from "next/image";
 
 export default async function MovieDetailsPage({ params }: { params: { id: string } }) {
@@ -25,9 +26,9 @@ export default async function MovieDetailsPage({ params }: { params: { id: strin
               className="object-cover"
             />
           </div>
-          <button className="hover:cursor-pointer w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] bg-primary hover:bg-rose-700 text-white shadow-lg shadow-primary/25">
-            <Plus /> Add to Watchlist
-          </button>
+
+          {/* Watch Later Button */}
+          <WatchLaterButton movie={movie} />
         </div>
 
         {/* Info Section */}
@@ -50,7 +51,7 @@ export default async function MovieDetailsPage({ params }: { params: { id: strin
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/5 text-gray-300">
               <Calendar size={16} />
-              {new Date(movie.release_date).getFullYear()}
+              <p>{new Date(movie.release_date).getFullYear()}</p>
             </div>
           </div>
 
