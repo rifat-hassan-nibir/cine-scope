@@ -22,6 +22,11 @@ export const getTopRatedMovies = async (): Promise<Movie[]> => {
     `${process.env.TMDB_BASE_URL}/movie/top_rated?language=en-US&page=1`,
     getOptions,
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch top rated movies");
+  }
+
   const data: MovieResponse = await res.json();
   return data.results;
 };
@@ -48,6 +53,11 @@ export const getMoviesData = async (
     `${process.env.TMDB_BASE_URL}/discover/movie?${params.toString()}`,
     getOptions,
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movies data");
+  }
+
   const data: MovieResponse = await res.json();
   return data.results || [];
 };
@@ -58,6 +68,11 @@ export const getAllGenres = async (): Promise<Genre[]> => {
     `${process.env.TMDB_BASE_URL}/genre/movie/list?language=en-US`,
     getOptions,
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch genres");
+  }
+
   const data: GenreResponse = await res.json();
   return data.genres;
 };
@@ -65,6 +80,11 @@ export const getAllGenres = async (): Promise<Genre[]> => {
 // get movie details
 export const getMovieDetails = async (movieId: number): Promise<MovieDetails> => {
   const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}`, getOptions);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie details");
+  }
+
   const data: MovieDetails = await res.json();
   return data;
 };
@@ -72,6 +92,11 @@ export const getMovieDetails = async (movieId: number): Promise<MovieDetails> =>
 // get movie cast details
 export const getMovieCastDetails = async (movieId: number): Promise<CastDetails> => {
   const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}/credits`, getOptions);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movie cast details");
+  }
+
   const data: CastDetails = await res.json();
   return data;
 };
@@ -79,6 +104,11 @@ export const getMovieCastDetails = async (movieId: number): Promise<CastDetails>
 // get similar movies
 export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
   const res = await fetch(`${process.env.TMDB_BASE_URL}/movie/${movieId}/similar`, getOptions);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch similar movies");
+  }
+
   const data: MovieResponse = await res.json();
   return data.results || [];
 };
@@ -89,6 +119,11 @@ export const searchMovies = async (query: string): Promise<Movie[]> => {
     `${process.env.TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`,
     getOptions,
   );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movies data");
+  }
+
   const data: MovieResponse = await res.json();
   return data.results || [];
 };

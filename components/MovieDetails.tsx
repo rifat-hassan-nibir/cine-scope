@@ -52,7 +52,7 @@ export default function MovieDetails({
           <div className="flex flex-wrap gap-4 text-sm font-medium">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/5 text-yellow-400">
               <Star size={16} fill="currentColor" />
-              <span className="text-white">{movie.vote_average.toFixed(1)}</span>
+              <span className="text-white">{movie.vote_average?.toFixed(1) || "0.0"}</span>
               <span className="text-gray-500">({movie.vote_count} votes)</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/5 text-gray-300">
@@ -61,7 +61,7 @@ export default function MovieDetails({
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/5 text-gray-300">
               <Calendar size={16} />
-              <p>{new Date(movie.release_date).getFullYear()}</p>
+              <p>{movie.release_date ? movie.release_date.split("-")[0] : "N/A"}</p>
             </div>
           </div>
 
