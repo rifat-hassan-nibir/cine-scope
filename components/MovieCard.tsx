@@ -32,10 +32,10 @@ export default function MovieCard({
             <div className="flex items-center gap-2 mb-2">
               <span className="flex items-center text-yellow-400 text-xs font-bold">
                 <Star size={12} className="fill-yellow-400 mr-1" />
-                {movie.vote_average.toFixed(1)}
+                {movie.vote_average?.toFixed(1) || "0.0"}
               </span>
               <span className="text-gray-300 text-xs">
-                {new Date(movie.release_date).getFullYear().toString()}
+                {movie.release_date ? movie.release_date.split("-")[0] : "N/A"}
               </span>
             </div>
 
@@ -51,7 +51,7 @@ export default function MovieCard({
         <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 group-hover:opacity-0 transition-opacity">
           <Star size={10} className="text-yellow-400 fill-yellow-400" />
           <span className="text-xs font-medium text-white">
-            {movie.vote_average.toFixed(1)}
+            {movie.vote_average?.toFixed(1) || "0.0"}
           </span>
         </div>
       </div>
