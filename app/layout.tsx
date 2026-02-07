@@ -1,4 +1,4 @@
-import DesktopNav from "@/components/DesktopNav";
+import DesktopNav from "@/components/navigation/DesktopNav";
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";

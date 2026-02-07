@@ -1,9 +1,9 @@
+import MovieCardWatchLater from "@/components/buttons/MovieCardWatchLater";
 import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { Movie } from "@/types/tmdb";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import MovieCardWatchLater from "./MovieCardWatchLater";
 
 export default function MovieCard({
   movie,

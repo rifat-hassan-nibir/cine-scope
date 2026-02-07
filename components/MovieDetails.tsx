@@ -1,13 +1,13 @@
 "use client";
 
+import MovieCard from "@/components/MovieCard";
+import WatchLaterButton from "@/components/buttons/WatchLaterButton";
 import { TMDB_IMAGE_BASE_URL } from "@/constants";
+import { addToRecentlyViewed } from "@/services/localStorage";
 import { Cast, Genre, Movie, MovieDetails as MovieDetailsType } from "@/types/tmdb";
 import { Calendar, Clock, Film, PanelsTopLeft, Star, Users } from "lucide-react";
 import Image from "next/image";
-import MovieCard from "./MovieCard";
-import WatchLaterButton from "./WatchLaterButton";
 import { useEffect } from "react";
-import { addToRecentlyViewed } from "@/services/localStorage";
 
 export default function MovieDetails({
   movie,
