@@ -82,3 +82,13 @@ export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
   const data: MovieResponse = await res.json();
   return data.results || [];
 };
+
+// search movies
+export const searchMovies = async (query: string): Promise<Movie[]> => {
+  const res = await fetch(
+    `${process.env.TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`,
+    getOptions,
+  );
+  const data: MovieResponse = await res.json();
+  return data.results || [];
+};

@@ -1,9 +1,9 @@
+import MovieCardWatchLater from "@/components/buttons/MovieCardWatchLater";
 import { TMDB_IMAGE_BASE_URL } from "@/constants";
 import { Movie } from "@/types/tmdb";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import MovieCardWatchLater from "./MovieCardWatchLater";
 
 export default function MovieCard({
   movie,
@@ -35,7 +35,7 @@ export default function MovieCard({
                 {movie.vote_average.toFixed(1)}
               </span>
               <span className="text-gray-300 text-xs">
-                {new Date(movie.release_date).getFullYear()}
+                {new Date(movie.release_date).getFullYear().toString()}
               </span>
             </div>
 
@@ -50,7 +50,9 @@ export default function MovieCard({
         {/* Static Rating Badge (visible when not hovering) */}
         <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 group-hover:opacity-0 transition-opacity">
           <Star size={10} className="text-yellow-400 fill-yellow-400" />
-          <span className="text-xs font-medium text-white">{movie.vote_average.toFixed(1)}</span>
+          <span className="text-xs font-medium text-white">
+            {movie.vote_average.toFixed(1)}
+          </span>
         </div>
       </div>
     </Link>
