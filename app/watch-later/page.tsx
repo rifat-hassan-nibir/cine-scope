@@ -1,6 +1,7 @@
 "use client";
 
 import MovieCard from "@/components/MovieCard";
+import { MovieCardSkeleton, Skeleton } from "@/components/SkeletonLoader";
 import { getFromLocalStorage } from "@/services/localStorage";
 import { Movie } from "@/types/tmdb";
 import { Clock } from "lucide-react";
@@ -9,10 +10,31 @@ import { useEffect, useState } from "react";
 
 export default function WatchlistPage() {
   const [watchList, setWatchList] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setWatchList(getFromLocalStorage("watchLater"));
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-8 animate-pulse">
+        <div className="flex items-center gap-3 border-b border-white/5 pb-6">
+          <Skeleton className="w-14 h-14 rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-8 w-48" />
+            <Skeleton className="h-4 w-64" />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {[...Array(10)].map((_, i) => (
+            <MovieCardSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
