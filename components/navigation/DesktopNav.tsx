@@ -3,6 +3,7 @@
 import { navLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import SearchField from "./SearchField";
 
 export default function DesktopNav() {
   const pathname = usePathname();
@@ -14,6 +15,10 @@ export default function DesktopNav() {
         <p className="text-primary text-3xl font-bold pb-5 font-outfit tracking-tight p-3">
           Cine Scope
         </p>
+
+        {/* search */}
+        <SearchField />
+
         {/* nav links */}
         <ul>
           {navLinks.map((link) => {
