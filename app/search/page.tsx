@@ -1,3 +1,4 @@
+import PaginationButton from "@/components/buttons/PaginationButton";
 import EmptyList from "@/components/EmptyList";
 import MovieList from "@/components/MovieList";
 import { searchMovies } from "@/services/tmdb";
@@ -6,10 +7,11 @@ import { Search } from "lucide-react";
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ query: string }>;
+  searchParams: Promise<{ query: string; page: string }>;
 }) {
-  const { query } = await searchParams;
-  const movies = await searchMovies(query || "");
+  const { query, page } = await searchParams;
+  const currentPage = page ? Number(page) : 1;
+  const movies = await searchMovies(query || "", currentPage.toString());
 
   return (
     <div className="space-y-8">
@@ -18,7 +20,10 @@ export default async function SearchPage({
       </h1>
 
       {movies.length > 0 ? (
-        <MovieList movies={movies} />
+        <>
+          <MovieList movies={movies} />
+          <PaginationButton currentPage={currentPage} />
+        </>
       ) : (
         <EmptyList
           title="No movies found"
