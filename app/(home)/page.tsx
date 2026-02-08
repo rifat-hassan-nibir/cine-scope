@@ -18,17 +18,17 @@ export default async function Home() {
   );
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-10 md:gap-12 lg:gap-16">
       {/* Top Rated Movies */}
       <section>
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-text border-l-4 border-primary pl-4">
+        <div className="flex items-center justify-between mb-6 md:mb-8">
+          <h1 className="text-xl md:text-2xl font-bold text-text border-l-4 border-primary pl-4">
             Top Rated Movies
           </h1>
           <SeeAllMoviesButton genre={"vote_average.desc"} />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
           {topRatedMovies.slice(0, 10).map((movie: Movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
@@ -38,14 +38,14 @@ export default async function Home() {
       {/* Movies by Genre */}
       {genreMovies.map((genre: Genre & { movies: Movie[] }) => (
         <section key={genre.id}>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-text border-l-4 border-primary pl-4">
+          <div className="flex items-center justify-between mb-6 md:mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-text border-l-4 border-primary pl-4">
               {genre.name}
             </h2>
             <SeeAllMoviesButton genre={genre.id} />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
             {genre.movies.map((movie: Movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

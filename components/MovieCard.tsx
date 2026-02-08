@@ -30,16 +30,16 @@ export default function MovieCard({
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 flex flex-col justify-end p-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="flex items-center text-yellow-400 text-xs font-bold">
+              <span className="flex items-center text-yellow-400 text-[10px] md:text-xs font-bold">
                 <Star size={12} className="fill-yellow-400 mr-1" />
                 {movie.vote_average?.toFixed(1) || "0.0"}
               </span>
-              <span className="text-gray-300 text-xs">
+              <span className="text-gray-300 text-[10px] md:text-xs">
                 {movie.release_date ? movie.release_date.split("-")[0] : "N/A"}
               </span>
             </div>
 
-            <h3 className="text-white font-bold text-sm mb-3 line-clamp-2 leading-tight">
+            <h3 className="text-white font-bold text-xs md:text-sm mb-3 line-clamp-2 leading-tight">
               {movie.title}
             </h3>
 
@@ -50,7 +50,7 @@ export default function MovieCard({
         {/* Static Rating Badge (visible when not hovering) */}
         <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 group-hover:opacity-0 transition-opacity">
           <Star size={10} className="text-yellow-400 fill-yellow-400" />
-          <span className="text-xs font-medium text-white">
+          <span className="text-[10px] md:text-xs font-medium text-white">
             {movie.vote_average?.toFixed(1) || "0.0"}
           </span>
         </div>
