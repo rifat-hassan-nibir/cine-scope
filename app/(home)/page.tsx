@@ -25,7 +25,6 @@ export default async function Home() {
           <h1 className="text-xl md:text-2xl font-bold text-text border-l-4 border-primary pl-4">
             Top Rated Movies
           </h1>
-          <SeeAllMoviesButton genre={"vote_average.desc"} />
         </div>
 
         {/* Movie List */}

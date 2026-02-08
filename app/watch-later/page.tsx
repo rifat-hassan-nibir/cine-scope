@@ -47,7 +47,7 @@ export default function WatchlistPage() {
 
       <hr className="border-white/5" />
 
-      {watchList.length > 0 ? (
+      {watchList?.length > 0 ? (
         <MovieList movies={watchList} />
       ) : (
         <div className="col-span-full">
