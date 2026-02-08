@@ -27,8 +27,8 @@ export default function MovieCard({
         />
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 flex flex-col justify-end p-4">
+          <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="flex items-center text-yellow-400 text-xs font-bold">
                 <Star size={12} className="fill-yellow-400 mr-1" />

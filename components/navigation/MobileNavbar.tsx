@@ -68,7 +68,7 @@ export default function MobileNavbar() {
             </span>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 text-gray-400 hover:text-white"
+              className="hover:cursor-pointer p-1 text-gray-400 hover:text-white"
               aria-label="Close menu"
             >
               <X size={24} />
