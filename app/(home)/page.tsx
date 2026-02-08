@@ -9,7 +9,7 @@ export default async function Home() {
 
   const genreMovies = await Promise.all(
     genres.map(async (genre: Genre) => {
-      const movies = await getMoviesData(genre.id, "popularity.desc", 1);
+      const movies = await getMoviesData(genre.id, "popularity.desc", "1");
       return {
         ...genre,
         movies: movies.slice(0, 5),
