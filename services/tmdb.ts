@@ -35,7 +35,7 @@ export const getTopRatedMovies = async (): Promise<Movie[]> => {
 export const getMoviesData = async (
   genreId?: number,
   sortBy: MovieSortOption = "popularity.desc",
-  page: number = 1,
+  page: string = "1",
 ): Promise<Movie[]> => {
   const params = new URLSearchParams({
     include_adult: "false",
@@ -114,9 +114,9 @@ export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
 };
 
 // search movies
-export const searchMovies = async (query: string): Promise<Movie[]> => {
+export const searchMovies = async (query: string, page: string = "1"): Promise<Movie[]> => {
   const res = await fetch(
-    `${process.env.TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`,
+    `${process.env.TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=${page}`,
     getOptions,
   );
 
