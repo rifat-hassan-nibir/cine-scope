@@ -7,7 +7,9 @@ import { addToRecentlyViewed } from "@/services/localStorage";
 import { Cast, Genre, Movie, MovieDetails as MovieDetailsType } from "@/types/tmdb";
 import { Calendar, Clock, Film, PanelsTopLeft, Star, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
+import EmptyList from "./EmptyList";
 
 export default function MovieDetails({
   movie,
@@ -23,8 +25,8 @@ export default function MovieDetails({
   }, [movie.id]);
 
   return (
-    <div className="mt-8 lg:mt-12 space-y-12">
-      <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-8 lg:gap-12">
+    <div className="mt-8 lg:mt-10 space-y-8 md:space-y-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-6 md:gap-8 lg:gap-12">
         {/* Poster Section */}
         <div className="space-y-6">
           <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10 aspect-2/3 relative">
@@ -42,14 +44,14 @@ export default function MovieDetails({
         </div>
 
         {/* Info Section */}
-        <div className="space-y-8 py-4">
+        <div className="space-y-6 md:space-y-8 py-4">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
               {movie.title}{" "}
             </h1>
           </div>
 
-          <div className="flex flex-wrap gap-4 text-sm font-medium">
+          <div className="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm font-medium">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/5 text-yellow-400">
               <Star size={16} fill="currentColor" />
               <span className="text-white">{movie.vote_average?.toFixed(1) || "0.0"}</span>
@@ -69,7 +71,7 @@ export default function MovieDetails({
             {movie.genres?.map((g: Genre) => (
               <span
                 key={g.id}
-                className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold"
+                className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs md:text-sm font-semibold"
               >
                 {g.name}
               </span>
@@ -79,15 +81,15 @@ export default function MovieDetails({
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <PanelsTopLeft className="text-primary" />
-              <h3 className="text-xl font-semibold text-white">Overview</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-white">Overview</h3>
             </div>
-            <p className="text-gray-300 leading-relaxed text-lg">{movie.overview}</p>
+            <p className="text-gray-300 leading-relaxed text-sm md:text-lg">{movie.overview}</p>
           </div>
 
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Users className="text-primary" />
-              <h3 className="text-xl font-semibold text-white">Top Casts</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-white">Top Casts</h3>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {castDetails.cast.slice(0, 10).map((cast: Cast) => (
@@ -117,12 +119,22 @@ export default function MovieDetails({
         <div className="space-y-6">
           <div className="flex items-center gap-2">
             <Film className="text-primary" />
-            <h3 className="text-2xl font-semibold text-white">Similar Movies</h3>
+            <h3 className="text-lg md:text-xl font-semibold text-white">Similar Movies</h3>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {similarMovies.slice(0, 10).map((movie: Movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+            {similarMovies.length > 0 ? (
+              similarMovies
+                .slice(0, 10)
+                .map((movie: Movie) => <MovieCard key={movie.id} movie={movie} />)
+            ) : (
+              <div className="col-span-full">
+                <EmptyList
+                  title="No similar movies found"
+                  description="We couldn't find any similar movies. Try searching for something else."
+                  icon={<Film size={48} className="md:size-16 mx-auto text-gray-600 mb-6" />}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

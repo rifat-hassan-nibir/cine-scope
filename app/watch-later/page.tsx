@@ -1,6 +1,8 @@
 "use client";
 
+import EmptyList from "@/components/EmptyList";
 import MovieCard from "@/components/MovieCard";
+import PageTitle from "@/components/PageTitle";
 import { MovieCardSkeleton, Skeleton } from "@/components/SkeletonLoader";
 import { getFromLocalStorage } from "@/services/localStorage";
 import { Movie } from "@/types/tmdb";
@@ -27,7 +29,7 @@ export default function WatchlistPage() {
             <Skeleton className="h-4 w-64" />
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {[...Array(10)].map((_, i) => (
             <MovieCardSkeleton key={i} />
           ))}
@@ -38,36 +40,27 @@ export default function WatchlistPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center gap-3 border-b border-white/5 pb-6">
-        <div className="p-3 bg-primary/10 rounded-xl">
-          <Clock className="w-8 h-8 text-primary" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Watch Later</h1>
-          <p className="text-gray-400">Your curated list of movies to watch</p>
-        </div>
-      </div>
+      <PageTitle
+        title="Watch Later"
+        description="Your curated list of movies to watch"
+        icon={<Clock className="w-8 h-8 text-primary" />}
+      />
+
+      <hr className="border-white/5" />
 
       {watchList.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {watchList.map((movie: Movie) => (
             <MovieCard key={movie.id} movie={movie} setWatchList={setWatchList} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 bg-surface rounded-3xl border border-dashed border-white/10">
-          <Clock size={64} className="mx-auto text-gray-600 mb-6" />
-          <h2 className="text-2xl font-bold text-white mb-2">Your watchlist is empty</h2>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">
-            Movies you add to your watchlist will appear here. Start exploring to find something
-            great to watch.
-          </p>
-          <Link
-            href="/"
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-rose-700 text-white font-semibold rounded-lg transition-colors"
-          >
-            Explore Movies
-          </Link>
+        <div className="col-span-full">
+          <EmptyList
+            title="Your watchlist is empty"
+            description="Movies you add to your watchlist will appear here. Start exploring to find something great to watch."
+            icon={<Clock size={48} className="md:size-16 mx-auto text-gray-600 mb-6" />}
+          />
         </div>
       )}
     </div>

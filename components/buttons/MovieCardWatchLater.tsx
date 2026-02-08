@@ -43,7 +43,7 @@ export default function MovieCardWatchLater({
   return (
     <button
       onClick={handleWatchLater}
-      className={`hover:cursor-pointer w-full py-2 px-3 rounded-lg flex items-center justify-center gap-2 text-xs font-semibold transition-colors ${isWatchLater ? "bg-primary backdrop-blur text-white hover:bg-primary/80" : "bg-white/20 backdrop-blur text-white hover:bg-white/30"}`}
+      className={`hover:cursor-pointer w-full py-2 px-3 rounded-lg flex items-center justify-center gap-2 text-[10px] md:text-xs font-semibold transition-colors ${isWatchLater ? "bg-primary backdrop-blur text-white hover:bg-primary/80" : "bg-white/20 backdrop-blur text-white hover:bg-white/30"}`}
     >
       {isWatchLater ? (
         <>
@@ -51,7 +51,7 @@ export default function MovieCardWatchLater({
         </>
       ) : (
         <>
-          <Plus size={14} /> Add to Watch Later
+          <Plus size={14} /> Watch Later
         </>
       )}
     </button>
