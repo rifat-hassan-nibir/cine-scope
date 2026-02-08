@@ -3,6 +3,19 @@ import EmptyList from "@/components/EmptyList";
 import MovieList from "@/components/MovieList";
 import { searchMovies } from "@/services/tmdb";
 import { Search } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>;
+}): Promise<Metadata> {
+  const { query } = await searchParams;
+  return {
+    title: `Search Results for "${query}" - CineScope`,
+    description: `Browse movie search results for "${query}" on CineScope.`,
+  };
+}
 
 export default async function SearchPage({
   searchParams,
