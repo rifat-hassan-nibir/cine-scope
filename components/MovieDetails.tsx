@@ -33,7 +33,7 @@ export default function MovieDetails({
               alt={movie.title || "Movie Poster"}
               width={500}
               height={750}
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function MovieDetails({
               <Users className="text-primary" />
               <h3 className="text-xl font-semibold text-white">Top Casts</h3>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {castDetails.cast.slice(0, 10).map((cast: Cast) => (
                 <div key={cast.id} className="flex flex-col items-center gap-2">
                   <Image
@@ -99,8 +99,10 @@ export default function MovieDetails({
                     height={100}
                     className="w-16 h-16 rounded-full object-cover"
                   />
-                  <p className="text-gray-300 text-xs font-medium text-wrap">{cast.name}</p>
-                  <p className="text-gray-500 text-xs text-wrap">{cast.character}</p>
+                  <p className="text-gray-300 text-xs font-medium text-center text-wrap">
+                    {cast.name}
+                  </p>
+                  <p className="text-gray-500 text-xs text-center text-wrap">{cast.character}</p>
                 </div>
               ))}
             </div>
@@ -117,7 +119,7 @@ export default function MovieDetails({
             <Film className="text-primary" />
             <h3 className="text-2xl font-semibold text-white">Similar Movies</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {similarMovies.slice(0, 10).map((movie: Movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

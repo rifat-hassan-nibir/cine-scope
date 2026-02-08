@@ -23,7 +23,7 @@ export default function MovieCard({
           alt={movie.title}
           width={500}
           height={750}
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
 
         {/* Hover Overlay */}
