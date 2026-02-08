@@ -1,3 +1,4 @@
+import EmptyList from "@/components/EmptyList";
 import MovieCard from "@/components/MovieCard";
 import { searchMovies } from "@/services/tmdb";
 import { Search } from "lucide-react";
@@ -23,13 +24,11 @@ export default async function SearchPage({
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 bg-surface rounded-3xl border border-dashed border-white/10">
-          <Search size={64} className="mx-auto text-gray-600 mb-6" />
-          <h2 className="text-2xl font-bold text-white mb-2">No movies found</h2>
-          <p className="text-gray-400 max-w-md mx-auto">
-            We couldn't find any movies matching "{query}". Try a different keyword.
-          </p>
-        </div>
+        <EmptyList
+          title="No movies found"
+          description={`We couldn't find any movies matching "${query}". Try a different keyword.`}
+          icon={<Search size={48} className="md:size-16 mx-auto text-gray-600 mb-6" />}
+        />
       )}
     </div>
   );
