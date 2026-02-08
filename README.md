@@ -11,6 +11,7 @@ Live Link: [cine-scope-nibir.vercel.app](https://cine-scope-nibir.vercel.app)
 - **Similar Recommendations**: Discover new favorites with a built-in recommendation engine for every movie.
 - **Advanced Search**: Real-time search functionality integrated directly into the navigation for instant access to the TMDB database.
 - **Watch Later & History**: Save movies to your personal watchlist and keep track of your recently viewed films, powered by persistent local storage.
+- **Smart Pagination**: seamless navigation through large movie lists with URL-based pagination and a responsive sliding-window interface.
 - **Responsive Navigation**: A dual-nav system featuring a sleek **Desktop Sidebar** and a **Mobile Hamburger Toggle** for a seamless across-device experience.
 - **Premium UI/UX**:
   - **Fluid Typography**: Auto-scaling font sizes for perfect readability on any device.
@@ -72,9 +73,12 @@ Live Link: [cine-scope-nibir.vercel.app](https://cine-scope-nibir.vercel.app)
 ```text
 ├── app/               # Next.js App Router (Pages, Layouts, API Config, CSS)
 ├── components/        # UI Component Library
-│   ├── buttons/       # Functional buttons (Watch Later, See All)
+│   ├── buttons/       # Functional buttons (Watch Later, See All, Pagination)
 │   ├── navigation/    # Responsive Nav systems (Desktop & Mobile)
 │   ├── MovieCard.tsx  # Core movie item component
+│   ├── MovieList.tsx  # Grid layout component for movie lists
+│   ├── SortMovies.tsx # Sorting and filtering component
+│   ├── SkeletonLoader.tsx # Loading states
 │   ├── PageTitle.tsx  # Dynamic page header component
 │   └── EmptyList.tsx  # Reusable empty state component
 ├── services/          # Business logic & API abstraction layers
