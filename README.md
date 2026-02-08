@@ -1,19 +1,22 @@
 # 🎬 CineScope
 
-CineScope is a premium movie discovery platform built with **Next.js 16**, **React 19**, and **Tailwind CSS**. It provides a seamless experience for exploring blockbusters, trending movies, and discovering deep cinematic details using the TMDB API.
+CineScope is a premium, high-performance movie discovery platform built with **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS 4**. It offers a cinematic experience for exploring trending titles, deep-diving into movie details, and managing a personal watchlist, all while maintaining a smooth and responsive interface.
 
-Live Link: https://cine-scope-nibir.vercel.app
+Live Link: [cine-scope-nibir.vercel.app](https://cine-scope-nibir.vercel.app)
 
 ## ✨ Features
 
-- **Dynamic Movie Discovery**: Explore top-rated movies and browse by a wide variety of genres.
-- **Detailed Insights**: Get comprehensive information about movies, including cast details, ratings, and similar recommendations.
-- **Advanced Search**: Real-time movie searching with optimized API interactions.
-- **Watch Later**: Save your favorite movies to a dedicated watch list (powered by local storage).
-- **Recently Viewed**: Keep track of the movies you've explored recently.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
-- **Premium UX**: Smooth transitions, custom scrollbars, and cinematic dark mode aesthetics.
-- **Robust Error Handling**: Customized error boundaries and 404 pages for a resilient user experience.
+- **Dynamic Movie Discovery**: Browse top-rated movies and explore a rich variety of genres with deep-linked navigation.
+- **Detailed Insights**: View comprehensive movie details, including cast information, runtime, release dates, and high-quality posters.
+- **Similar Recommendations**: Discover new favorites with a built-in recommendation engine for every movie.
+- **Advanced Search**: Real-time search functionality integrated directly into the navigation for instant access to the TMDB database.
+- **Watch Later & History**: Save movies to your personal watchlist and keep track of your recently viewed films, powered by persistent local storage.
+- **Responsive Navigation**: A dual-nav system featuring a sleek **Desktop Sidebar** and a **Mobile Hamburger Toggle** for a seamless across-device experience.
+- **Premium UI/UX**:
+  - **Fluid Typography**: Auto-scaling font sizes for perfect readability on any device.
+  - **Skeleton Loaders**: Custom shimmering loading states that match the layout for a perceived performance boost.
+  - **Glassmorphism**: Subtle blur effects and premium dark-mode aesthetics.
+  - **Micro-interactions**: Hover effects, smooth transitions, and intuitive toggle buttons.
 
 ## 🚀 Tech Stack
 
@@ -29,8 +32,8 @@ Live Link: https://cine-scope-nibir.vercel.app
 ### Prerequisites
 
 - Node.js 20.x or later
-- npm or yarn
-- A TMDB API Access Token
+- npm, pnpm, or yarn
+- A TMDB API Access Token (Bearer Token)
 
 ### Installation
 
@@ -48,7 +51,7 @@ Live Link: https://cine-scope-nibir.vercel.app
    ```
 
 3. **Set up environment variables**:
-   Create a `.env` file in the root directory and add the following:
+   Create a `.env` file in the root directory and add your TMDB credentials:
 
    ```env
    TMDB_BASE_URL=https://api.themoviedb.org/3
@@ -62,15 +65,20 @@ Live Link: https://cine-scope-nibir.vercel.app
    ```
 
 5. **Open the application**:
-   Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📁 Project Structure
 
 ```text
-├── app/               # Next.js App Router (Pages, Layouts, CSS)
-├── components/        # Reusable UI components
-├── services/          # API service layers (TMDB interactions)
-├── types/             # TypeScript interfaces and types
-├── public/            # Static assets
-└── constants.ts       # Global constants and navigation config
+├── app/               # Next.js App Router (Pages, Layouts, API Config, CSS)
+├── components/        # UI Component Library
+│   ├── buttons/       # Functional buttons (Watch Later, See All)
+│   ├── navigation/    # Responsive Nav systems (Desktop & Mobile)
+│   ├── MovieCard.tsx  # Core movie item component
+│   ├── PageTitle.tsx  # Dynamic page header component
+│   └── EmptyList.tsx  # Reusable empty state component
+├── services/          # Business logic & API abstraction layers
+├── types/             # Centralized TypeScript definitions
+├── constants.ts       # Global config and navigation paths
+└── README.md          # Project documentation
 ```
