@@ -3,6 +3,22 @@ import MovieList from "@/components/MovieList";
 import SortMovies from "@/components/SortMovies";
 import { getAllGenres, getMoviesData } from "@/services/tmdb";
 import { MovieSortOption } from "@/types/tmdb";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await searchParams;
+  const genres = await getAllGenres();
+  const genre = genres.find((g) => g.id === Number(id));
+
+  return {
+    title: `${genre?.name || "Movies"} - CineScope`,
+    description: `Explore the best ${genre?.name || "popular"} movies on CineScope.`,
+  };
+}
 
 export default async function GenresPage({
   searchParams,
