@@ -14,6 +14,9 @@ const getOptions = {
     accept: "application/json",
     Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
   },
+  next: {
+    revalidate: 3600,
+  },
 };
 
 // get top rated movies
