@@ -1,5 +1,6 @@
 "use client";
 
+import EmptyList from "@/components/EmptyList";
 import MovieCard from "@/components/MovieCard";
 import PageTitle from "@/components/PageTitle";
 import { MovieCardSkeleton, Skeleton } from "@/components/SkeletonLoader";
@@ -72,18 +73,12 @@ export default function RecentlyViewedPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 bg-surface rounded-3xl border border-dashed border-white/10">
-          <Eye size={64} className="mx-auto text-gray-600 mb-6" />
-          <h2 className="text-2xl font-bold text-white mb-2">Your recently viewed list is empty</h2>
-          <p className="text-gray-400 mb-8 max-w-md mx-auto">
-            Movies you watch will appear here. Start exploring to find something great to watch.
-          </p>
-          <Link
-            href="/"
-            className="hover:cursor-pointer inline-flex items-center px-6 py-3 bg-primary hover:bg-rose-700 text-white font-semibold rounded-lg transition-colors"
-          >
-            Explore Movies
-          </Link>
+        <div className="col-span-full">
+          <EmptyList
+            title="Your recently viewed list is empty"
+            description="Movies you watch will appear here. Start exploring to find something great to watch."
+            icon={<Eye size={48} className="md:size-16 mx-auto text-gray-600 mb-6" />}
+          />
         </div>
       )}
     </div>

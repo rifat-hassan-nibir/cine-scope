@@ -7,7 +7,9 @@ import { addToRecentlyViewed } from "@/services/localStorage";
 import { Cast, Genre, Movie, MovieDetails as MovieDetailsType } from "@/types/tmdb";
 import { Calendar, Clock, Film, PanelsTopLeft, Star, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
+import EmptyList from "./EmptyList";
 
 export default function MovieDetails({
   movie,
@@ -119,10 +121,20 @@ export default function MovieDetails({
             <Film className="text-primary" />
             <h3 className="text-lg md:text-xl font-semibold text-white">Similar Movies</h3>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {similarMovies.slice(0, 10).map((movie: Movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+            {similarMovies.length > 0 ? (
+              similarMovies
+                .slice(0, 10)
+                .map((movie: Movie) => <MovieCard key={movie.id} movie={movie} />)
+            ) : (
+              <div className="col-span-full">
+                <EmptyList
+                  title="No similar movies found"
+                  description="We couldn't find any similar movies. Try searching for something else."
+                  icon={<Film size={48} className="md:size-16 mx-auto text-gray-600 mb-6" />}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
