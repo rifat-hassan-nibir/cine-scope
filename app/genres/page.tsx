@@ -1,7 +1,7 @@
-import MovieCard from "@/components/MovieCard";
+import MovieList from "@/components/MovieList";
 import SortMovies from "@/components/SortMovies";
 import { getAllGenres, getMoviesData } from "@/services/tmdb";
-import { Movie, MovieSortOption } from "@/types/tmdb";
+import { MovieSortOption } from "@/types/tmdb";
 
 export default async function GenresPage({
   searchParams,
@@ -15,11 +15,7 @@ export default async function GenresPage({
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
       <SortMovies genres={genres} />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-        {movies.map((movie: Movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <MovieList movies={movies} />
     </div>
   );
 }

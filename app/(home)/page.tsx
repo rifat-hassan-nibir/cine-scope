@@ -1,5 +1,5 @@
 import SeeAllMoviesButton from "@/components/buttons/SeeAllMoviesButton";
-import MovieCard from "@/components/MovieCard";
+import MovieList from "@/components/MovieList";
 import { getAllGenres, getMoviesData, getTopRatedMovies } from "@/services/tmdb";
 import { Genre, Movie } from "@/types/tmdb";
 
@@ -28,11 +28,8 @@ export default async function Home() {
           <SeeAllMoviesButton genre={"vote_average.desc"} />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-          {topRatedMovies.slice(0, 10).map((movie: Movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {/* Movie List */}
+        <MovieList movies={topRatedMovies.slice(0, 10)} />
       </section>
 
       {/* Movies by Genre */}
@@ -45,11 +42,8 @@ export default async function Home() {
             <SeeAllMoviesButton genre={genre.id} />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-            {genre.movies.map((movie: Movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+          {/* Movie List */}
+          <MovieList movies={genre.movies} />
         </section>
       ))}
     </div>

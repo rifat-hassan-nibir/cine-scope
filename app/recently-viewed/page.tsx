@@ -1,13 +1,12 @@
 "use client";
 
 import EmptyList from "@/components/EmptyList";
-import MovieCard from "@/components/MovieCard";
+import MovieList from "@/components/MovieList";
 import PageTitle from "@/components/PageTitle";
 import { MovieCardSkeleton, Skeleton } from "@/components/SkeletonLoader";
 import { getFromLocalStorage } from "@/services/localStorage";
 import { Movie } from "@/types/tmdb";
 import { Eye, Trash } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function RecentlyViewedPage() {
@@ -66,12 +65,8 @@ export default function RecentlyViewedPage() {
 
       <hr className="border-white/5" />
 
-      {recentlyViewed.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {recentlyViewed.map((movie: Movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+      {recentlyViewed?.length > 0 ? (
+        <MovieList movies={recentlyViewed} />
       ) : (
         <div className="col-span-full">
           <EmptyList
