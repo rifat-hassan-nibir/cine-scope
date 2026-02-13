@@ -15,7 +15,7 @@ const getOptions = {
     Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
   },
   next: {
-    revalidate: 3600,
+    revalidate: 15 * 24 * 60 * 60, // 15 days in seconds
   },
 };
 
